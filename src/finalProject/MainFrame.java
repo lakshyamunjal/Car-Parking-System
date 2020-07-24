@@ -1,6 +1,8 @@
 package finalProject;
 
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MainFrame extends javax.swing.JFrame {
 
@@ -128,6 +130,15 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         this.dispose();
+        
+        try {
+            // call to create SlotFile if it does not exist
+            CarSlot.generateInitialFile();
+        } catch (Exception ex) {
+            
+        }
+        
+        
         new DisplayParkingLot();
     }//GEN-LAST:event_displayParkingLotButtonActionPerformed
 

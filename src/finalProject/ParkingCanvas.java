@@ -3,11 +3,8 @@ package finalProject;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -66,7 +63,7 @@ class MyCanvas extends java.awt.Canvas {
 
         // populate array by reading objects from file
         try {
-            ois = new ObjectInputStream(new FileInputStream("D:\\Parking System\\SlotFile.txt"));
+            ois = new ObjectInputStream(new FileInputStream("lib\\SlotFile.txt"));
             Slot s = (Slot) ois.readObject();
             while (s != null) {
                 parkingSlotInformation[count++] = s;
@@ -81,7 +78,7 @@ class MyCanvas extends java.awt.Canvas {
                     // nearest empty slot found
                     parkingSlotInformation[i].setCarToken(1);
                     slotNumber = parkingSlotInformation[i].getSlotNumber();
-//                   System.out.println(parkingSlotInformation[i]);
+
 
                     // write updates to existing file
                     writeUpdatesToFile(slotNumber);
@@ -250,7 +247,7 @@ class MyCanvas extends java.awt.Canvas {
             return;
         }
         try {
-            File file = new File("D:\\Parking System\\SlotFile.txt");
+            File file = new File("lib\\SlotFile.txt");
             // false states that file will be overwritten
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file, false));
 
@@ -285,7 +282,7 @@ public class ParkingCanvas {
 
     MyCanvas canvas = null;
     JFrame parkingLot;
-    
+
     public ParkingCanvas(String plateNumber, String currentTime) {
         parkingLot = new JFrame("Pakring Lot");
         //super("Parking lot");
@@ -309,26 +306,18 @@ public class ParkingCanvas {
         parkingSlip.setSize(300, 300);
         parkingSlip.setVisible(true);
         parkingSlip.setLocation(500, 300);
-        
+
         parkingSlip.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 parkingLot.add(canvas);
                 parkingLot.setVisible(true);
-                parkingLot.setLocation(0,0);
+                parkingLot.setLocation(0, 0);
                 parkingLot.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             }
         });
 
-        
     }
-
-//    private Point getSystemResolution() {
-//        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-//        dim.width /= 2;
-//        dim.height /= 2;
-//        return new Point(dim.width, dim.height);
-//    }
 
     public static void main(String[] ar) {
         new ParkingCanvas("RIYA 420", "8:00");
