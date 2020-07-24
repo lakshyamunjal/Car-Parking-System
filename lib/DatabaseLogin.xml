@@ -1,0 +1,7 @@
+<?xml version = "1.0"?>
+<Info>
+	<username>root</username>
+	<password>.dpadpep</password>
+	<url>jdbc:mysql://localhost:3306/parking_system?zeroDateTimeBehavior=convertToNull</url>
+	<driver>com.mysql.jdbc.Driver</driver>
+</Info>
