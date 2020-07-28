@@ -120,7 +120,7 @@ public class ExitForm {
 
     private void performOCR() {
         Tesseract tesseract = new Tesseract();
-        String dataPath = "D:\\Parking System\\JAR Files\\Tess4J\\tessdata";
+        String dataPath = "lib\\tessdata";
         try {
             tesseract.setDatapath(dataPath);
 
@@ -202,7 +202,7 @@ public class ExitForm {
         Slot[] slotArray = new Slot[60];
 
         try {
-            in = new ObjectInputStream(new FileInputStream("D:\\Parking System\\SlotFile.txt"));
+            in = new ObjectInputStream(new FileInputStream("lib\\SlotFile.txt"));
 
             for (int i = 0; i < 60; i++) {
                 slotArray[i] = (Slot) in.readObject();
@@ -213,7 +213,7 @@ public class ExitForm {
             }
             in.close();
 
-            out = new ObjectOutputStream(new FileOutputStream("D:\\Parking System\\SlotFile.txt"));
+            out = new ObjectOutputStream(new FileOutputStream("lib\\SlotFile.txt"));
 
             for (Slot s : slotArray) {
                 out.writeObject(s);
